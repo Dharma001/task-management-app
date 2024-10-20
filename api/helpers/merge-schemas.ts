@@ -20,10 +20,16 @@ const mergeSchemas = async (): Promise<void> => {
 
   const files: string[] = fs.readdirSync(modelsDir);
 
+  files.sort((a, b) => {
+    const prefixA = parseInt(a.split('_')[0]);
+    const prefixB = parseInt(b.split('_')[0]);
+    return prefixA - prefixB;
+  });
+
   files.forEach((file: string) => {
     const filePath: string = path.join(modelsDir, file);
     const modelContent: string = fs.readFileSync(filePath, 'utf8');
-    models += modelContent + '\n';
+    models += modelContent + '\n'; 
   });
 
   const finalSchema: string = `${dataSource}\n${models}`;

@@ -13,5 +13,7 @@ model User {
   updated_at      DateTime    @updatedAt
 
   socialAccounts       SocialAccount[]    @relation("UserSocialAccounts")
+  notifications        Notification[]    @relation("UserNotifications") 
+  tasks                Task[]            @relation("UserTasks") 
   @@map("users")
 }

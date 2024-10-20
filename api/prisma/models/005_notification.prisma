@@ -1,0 +1,21 @@
+enum NotificationType {
+  TASK_ASSIGNED
+  TASK_UPDATED
+  TASK_COMPLETED
+  TASK_REMINDER
+}
+
+model Notification {
+  id          Int       @id @default(autoincrement())
+  user_id     Int       
+  task_id     Int?      
+  message     String     
+  type        NotificationType     
+  is_read     Boolean    @default(false)
+  created_at  DateTime  @default(now()) 
+
+user        User       @relation("UserNotifications", fields: [user_id], references: [id], onDelete: Cascade)
+task        Task?      @relation("TaskNotifications", fields: [task_id], references: [id], onDelete: SetNull)
+
+  @@map("notifications")
+}

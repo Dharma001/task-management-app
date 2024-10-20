@@ -1,0 +1,24 @@
+enum TaskStatusEnum {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  ARCHIVED
+}
+
+model Task {
+  id                Int              @id @default(autoincrement())
+  user_id           Int
+  task_description  String
+  created_at        DateTime         @default(now())
+  updated_at        DateTime         @updatedAt
+  due_date          DateTime?
+  attachment        String?          
+  priority          String?          
+  archived          Boolean          @default(false)
+  status            TaskStatusEnum   
+
+  user             User              @relation("UserTasks", fields: [user_id], references: [id], onDelete: Cascade)
+  notifications    Notification[]    @relation("TaskNotifications")
+
+  @@map("tasks")
+}

@@ -8,6 +8,26 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model User {
+  id              Int        @id @default(autoincrement())
+  name            String
+  email           String     @unique
+  password        String
+  image           String?
+  email_verified_at DateTime?
+  dob               DateTime?    @db.Date
+  phone           String? 
+  remember_token   String?
+  status          Int         @default(1)
+  created_at      DateTime    @default(now())
+  updated_at      DateTime    @updatedAt
+
+  socialAccounts       SocialAccount[]    @relation("UserSocialAccounts")
+  notifications        Notification[]    @relation("UserNotifications") 
+  tasks                Task[]            @relation("UserTasks") 
+  @@map("users")
+}
+
 model Otp {
   id              Int        @id @default(autoincrement())
   email           String 
@@ -33,21 +53,48 @@ model SocialAccount {
   @@unique([provider, provider_user_id])
 }
 
-model User {
-  id              Int        @id @default(autoincrement())
-  name            String
-  email           String     @unique
-  password        String
-  image           String?
-  email_verified_at DateTime?
-  dob               DateTime?    @db.Date
-  phone           String? 
-  remember_token   String?
-  status          Int         @default(1)
-  created_at      DateTime    @default(now())
-  updated_at      DateTime    @updatedAt
-
-  socialAccounts       SocialAccount[]    @relation("UserSocialAccounts")
-  @@map("users")
+enum TaskStatusEnum {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+  ARCHIVED
 }
 
+model Task {
+  id                Int              @id @default(autoincrement())
+  user_id           Int
+  task_description  String
+  created_at        DateTime         @default(now())
+  updated_at        DateTime         @updatedAt
+  due_date          DateTime?
+  attachment        String?          
+  priority          String?          
+  archived          Boolean          @default(false)
+  status            TaskStatusEnum   
+
+  user             User              @relation("UserTasks", fields: [user_id], references: [id], onDelete: Cascade)
+  notifications    Notification[]    @relation("TaskNotifications")
+
+  @@map("tasks")
+}
+enum NotificationType {
+  TASK_ASSIGNED
+  TASK_UPDATED
+  TASK_COMPLETED
+  TASK_REMINDER
+}
+
+model Notification {
+  id          Int       @id @default(autoincrement())
+  user_id     Int       
+  task_id     Int?      
+  message     String     
+  type        NotificationType     
+  is_read     Boolean    @default(false)
+  created_at  DateTime  @default(now()) 
+
+user        User       @relation("UserNotifications", fields: [user_id], references: [id], onDelete: Cascade)
+task        Task?      @relation("TaskNotifications", fields: [task_id], references: [id], onDelete: SetNull)
+
+  @@map("notifications")
+}

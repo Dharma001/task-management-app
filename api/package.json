@@ -4,19 +4,46 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node src/index.ts",
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "start:dev": "ts-node src/index.ts",
+    "dev": "nodemon --exec ts-node src/index.ts",
+    "build": "pnpm run clean && tsc",
+    "clean": "rm -rf dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.1"
+    "@prisma/client": "^5.21.1",
+    "@types/passport-google-oauth20": "^2.0.16",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "emoji-picker-react": "^4.12.0",
+    "express": "^4.21.1",
+    "express-session": "^1.18.0",
+    "googleapis": "^144.0.0",
+    "joi": "^17.13.3",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1",
+    "nodemailer": "^6.9.15",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
+    "@types/joi": "^17.2.2",
+    "@types/jsonwebtoken": "^9.0.7",
     "@types/node": "^22.7.7",
+    "@types/nodemailer": "^6.4.16",
+    "@types/passport": "^1.0.16",
+    "nodemon": "^3.1.7",
+    "prisma": "^5.21.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   }

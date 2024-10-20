@@ -5,13 +5,13 @@ model User {
   password        String
   image           String?
   email_verified_at DateTime?
-  dob             DateTime?   
+  dob               DateTime?    @db.Date
   phone           String? 
   remember_token   String?
-  is_admin         Int         @default(0)
   status          Int         @default(1)
   created_at      DateTime    @default(now())
   updated_at      DateTime    @updatedAt
 
+  socialAccounts       SocialAccount[]    @relation("UserSocialAccounts")
   @@map("users")
 }

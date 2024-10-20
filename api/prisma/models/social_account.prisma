@@ -1,0 +1,16 @@
+model SocialAccount {
+  id                Int      @id @default(autoincrement())
+  user_id          Int
+  provider         String   @db.VarChar(50)
+  provider_user_id String   @db.VarChar(191) @unique
+  access_token     String? 
+  refresh_token    String?
+  expires_at       DateTime?
+  created_at       DateTime @default(now())
+  updated_at       DateTime @updatedAt 
+
+  user             User     @relation("UserSocialAccounts", fields: [user_id], references: [id], onDelete: Cascade)
+
+  @@map("social_accounts")
+  @@unique([provider, provider_user_id])
+}

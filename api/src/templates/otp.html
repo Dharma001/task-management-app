@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000000;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+        }
+        .email-container {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            background-color: #000000;
+            padding: 20px;
+            border: 1px solid #ffffff;
+        }
+        .header {
+            background-color: #ffffff;
+            color: #000000;
+            padding: 10px 0;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            color: #000000;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .content p {
+            color: #ffffff;
+        }
+        .content strong {
+            color: #4CAF50;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #888888;
+        }
+        .footer p {
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="header">
+            <h1>Your OTP Code</h1>
+        </div>
+        <div class="content">
+            <p>Hello,</p>
+            <p>Your OTP code is: <strong>{{otp}}</strong></p>
+            <p>Please use this code to complete your registration.</p>
+        </div>
+        <div class="footer">
+            <p>&copy; 2024 MyCompany</p>
+        </div>
+    </div>
+</body>
+</html>

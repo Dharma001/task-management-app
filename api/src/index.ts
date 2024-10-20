@@ -4,6 +4,7 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import { connectToDatabase, disconnectDatabase } from './utils/database';
 import http from 'http';
+import passport from './config/passport-setup';
 import routes from './routes';
 import { errorHandler } from './middleware/errorHandler';
 
@@ -22,6 +23,8 @@ app.use((req: Request, res: Response) => {
     res.status(404).json({ message: 'Not Found' });
 });
 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(errorHandler);
 
 const startServer = async (): Promise<void> => {

@@ -8,6 +8,13 @@
     "start:dev": "ts-node src/index.ts",
     "dev": "nodemon --exec ts-node src/index.ts",
     "build": "pnpm run clean && tsc",
+    "merge-schema": "ts-node helpers/merge-schemas.ts",
+    "prisma:generate": "pnpm run merge-schema && pnpx prisma generate",
+    "prisma:migrate": "pnpm run merge-schema && pnpx prisma migrate dev",
+    "prisma:migrate:reset": "pnpx prisma migrate reset --force",
+    "prisma:migrate:rollback": "pnpx prisma migrate resolve --rolled-back",
+    "prisma:migrate:fresh": "pnpx prisma migrate reset --force && pnpx prisma migrate dev",
+    "prisma:seed": "pnpx prisma db seed",
     "clean": "rm -rf dist"
   },
   "keywords": [],

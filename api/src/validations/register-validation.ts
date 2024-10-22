@@ -29,12 +29,12 @@ const userRegisterSchema = Joi.object({
         }),
     password: Joi.string()
         .min(8)
-        .pattern(new RegExp('^[a-zA-Z0-9]{3,30}$'))
+        .pattern(/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*])[a-zA-Z\d!@#$%^&*]{8,30}$/)
         .required()
         .messages({
             'string.base': '"password" should be a type of text',
             'string.empty': '"password" cannot be an empty field',
-            'string.min': '"password" should be at least 6 characters long',
+            'string.min': '"password" should be at least 8 characters long',
             'any.required': '"password" is a required field',
         }),
     confirmPassword: Joi.string()

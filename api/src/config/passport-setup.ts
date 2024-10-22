@@ -32,11 +32,11 @@ passport.use(new GoogleStrategy({
                     email,
                     name,
                     image,
+                    email_verified_at: new Date(Date.now()),
                     password: hashedPassword,
                 },
             });
         }
-
         
         if(user){
             await prisma.socialAccount.upsert({

@@ -1,11 +1,11 @@
 import React from 'react'
 
-const Home: React.FC = () => {
+const Index: React.FC = () => {
 
   return (
     <>
     <div className="w-full h-screen">
-      <div className="div grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         <div className="p-4 border border-gray-400">
           <p>div1</p>
         </div>
@@ -24,4 +24,4 @@ const Home: React.FC = () => {
   )
 }
 
-export default Home;
+export default Index;

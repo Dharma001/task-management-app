@@ -1,4 +1,5 @@
-import Home from '../pages/Home';
+import Index from '../pages/Dashboard/Index';
+import Task from '../pages/Dashboard/Task/Index';
 import LoginAuth from '../pages/LoginAuth';
 
 interface RouteConfig {
@@ -15,7 +16,12 @@ export const routeConfig: RouteConfig[] = [
   },
   { 
     path: "/",
-    element: <Home />,
+    element: <Index />,
+    protected: true 
+  },
+  { 
+    path: "/tasks",
+    element: <Task />,
     protected: true 
   }
 ];

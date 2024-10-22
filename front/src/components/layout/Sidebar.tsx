@@ -8,7 +8,7 @@ const Sidebar: React.FC = () => {
 
   return (
     <aside className='w-full z-0 h-full p-4 space-y-4 overflow-y-auto'>
-      <div className='flex px-4 gap-2 items-end border-b-2 pb-4 border-gray-400'>
+      <div className='flex px-4 gap-2 items-end border-b-2 pb-4 border-gray-400 border-opacity-30'>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="w-10 h-10 lg:w-[31px] lg:h-[31px] text-indigo-500"
@@ -31,7 +31,7 @@ const Sidebar: React.FC = () => {
             }
           />
           <SidebarLink
-            to="/explore"
+            to="/tasks"
             label="Tasks"
             activeIcon={
               <svg xmlns="http://www.w3.org/2000/svg" width="1.5rem" height="1.5rem" viewBox="0 0 28 28">

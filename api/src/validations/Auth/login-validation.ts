@@ -1,10 +1,9 @@
 import Joi from 'joi';
-import { IUserService } from '../contracts/IUserService';
-import { VerifyUserEmail } from '../dtos/users/auth/auth-verify-email';
+import { UserLoginRequestDTO } from '../../dtos/users/auth/login-request-dto';
 
-const userSchema = Joi.object({
+const userLoginSchema = Joi.object({
     email: Joi.string()
-        .email({ tlds: { allow: false } }) 
+        .email({ tlds: { allow: false } })
         .required()
         .messages({
             'string.base': '"email" should be a type of text',
@@ -12,18 +11,26 @@ const userSchema = Joi.object({
             'string.email': '"email" must be a valid email',
             'any.required': '"email" is a required field',
         }),
+    password: Joi.string()
+        .required()
+        .messages({
+            'string.base': '"password" should be a type of text',
+            'string.empty': '"password" cannot be an empty field',
+            'any.required': '"password" is a required field',
+        }),
 });
 
 /**
- * Validates the user store/update request DTO.
- * @param dto - The UserRequestDTO containing create/update information.
+ * Validates the user login request DTO.
+ * @param dto - The UserLoginRequestDTO containing login information.
  * @returns An object indicating whether validation succeeded and any validation errors.
  */
-export const validateUserEmail = async (dto: VerifyUserEmail, userService: IUserService) => {
-    const { error } = userSchema.validate(dto, { abortEarly: false });
+export const validateUserLogin = async (dto: UserLoginRequestDTO) => {
+    const { error } = userLoginSchema.validate(dto, { abortEarly: false });
+    
     if (error) {
         const validationErrors: Record<string, string[]> = {};
-        
+
         error.details.forEach((detail) => {
             const key = detail.path.join('.');
             if (!validationErrors[key]) {
@@ -33,16 +40,6 @@ export const validateUserEmail = async (dto: VerifyUserEmail, userService: IUser
         });
 
         return { valid: false, errors: validationErrors };
-    }
-
-    const existingUser = await userService.getUserByEmail(dto.email);
-    if (!existingUser) {
-        return {
-            valid: false,
-            errors: {
-                email: ['Sorry, we could not find your account.'],
-            },
-        };
     }
 
     return { valid: true };

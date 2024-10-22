@@ -1,6 +1,6 @@
 import Joi from 'joi';
-import { IUserService } from '../contracts/IUserService';
-import { UserRegisterRequestDTO } from '../dtos/users/auth/register-request-dto';
+import { IUserService } from '../../contracts/IUserService';
+import { UserRegisterRequestDTO } from '../../dtos/users/auth/register-request-dto';
 
 const userRegisterSchema = Joi.object({
     name: Joi.string().required().messages({

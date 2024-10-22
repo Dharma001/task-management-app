@@ -12,7 +12,7 @@ interface TableProps<T extends TableItem> {
   children: (item: T) => React.ReactNode;
 }
 
-const TableComponent = <T extends TableItem>({
+const Table = <T extends TableItem>({
   headers,
   items,
   children,
@@ -52,4 +52,4 @@ const TableComponent = <T extends TableItem>({
   );
 };
 
-export default TableComponent;
+export default Table;

@@ -1,11 +1,8 @@
 -- CreateEnum
-CREATE TYPE "TaskStatusEnum" AS ENUM ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ARCHIVED');
+CREATE TYPE "TaskStatusEnum" AS ENUM ('PENDING', 'IN_PROGRESS', 'COMPLETED', 'INCOMPLETE');
 
 -- CreateEnum
-CREATE TYPE "TaskPriorityEnum" AS ENUM ('LOW', 'MEDIUM', 'HIGH', 'URGENT');
-
--- CreateEnum
-CREATE TYPE "NotificationType" AS ENUM ('TASK_ASSIGNED', 'TASK_UPDATED', 'TASK_COMPLETED', 'TASK_REMINDER');
+CREATE TYPE "TaskPriorityEnum" AS ENUM ('LOW', 'MEDIUM', 'HIGH');
 
 -- CreateTable
 CREATE TABLE "users" (
@@ -54,7 +51,8 @@ CREATE TABLE "social_accounts" (
 CREATE TABLE "tasks" (
     "id" SERIAL NOT NULL,
     "user_id" INTEGER NOT NULL,
-    "task_description" TEXT NOT NULL,
+    "title" TEXT NOT NULL,
+    "description" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
     "due_date" TIMESTAMP(3),
@@ -72,7 +70,6 @@ CREATE TABLE "notifications" (
     "user_id" INTEGER NOT NULL,
     "task_id" INTEGER,
     "message" TEXT NOT NULL,
-    "type" "NotificationType" NOT NULL,
     "is_read" BOOLEAN NOT NULL DEFAULT false,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 

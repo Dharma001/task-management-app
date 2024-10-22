@@ -1,15 +1,20 @@
 import Joi from 'joi';
-import { TaskRequestDTO } from '../dtos/tasks/task-request-dto';
+import { TaskRequestDTO } from '../../dtos/tasks/task-request-dto';
 
 const taskRequestSchema = Joi.object({
     user_id: Joi.number().required().messages({
         'number.base': '"user_id" should be a type of number',
         'any.required': '"user_id" is a required field',
     }),
-    task_description: Joi.string().required().messages({
-        'string.base': '"task_description" should be a type of text',
-        'string.empty': '"task_description" cannot be an empty field',
-        'any.required': '"task_description" is a required field',
+    title: Joi.string().required().messages({
+        'string.base': '"title" should be a type of text',
+        'string.empty': '"title" cannot be an empty field',
+        'any.required': '"title" is a required field',
+    }),
+    description: Joi.string().required().messages({
+        'string.base': '"description" should be a type of text',
+        'string.empty': '"description" cannot be an empty field',
+        'any.required': '"description" is a required field',
     }),
     due_date: Joi.date().greater('now').optional().messages({
         'date.base': '"due_date" should be a valid date',
@@ -25,8 +30,8 @@ const taskRequestSchema = Joi.object({
     archived: Joi.boolean().optional().messages({
         'boolean.base': '"archived" should be a type of boolean',
     }),
-    status: Joi.string().valid('PENDING', 'IN_PROGRESS', 'COMPLETED', 'ARCHIVED').optional().messages({
-        'any.only': '"status" must be one of the following values: PENDING, IN_PROGRESS, COMPLETED, ARCHIVED',
+    status: Joi.string().valid('PENDING', 'IN_PROGRESS', 'COMPLETED', 'INCOMPLETE').optional().messages({
+        'any.only': '"status" must be one of the following values: PENDING, IN_PROGRESS, COMPLETED, INCOMPLETE',
     }),
 });
 

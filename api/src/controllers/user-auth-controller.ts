@@ -5,15 +5,15 @@ import { UserRegisterRequestDTO } from '../dtos/users/auth/register-request-dto'
 import { UserLoginRequestDTO } from '../dtos/users/auth/login-request-dto';
 import { UserResponseDTO } from '../dtos/users/user-response-dto';
 import { ResponseHelper } from '../../helpers/response-helper';
-import { validateUserRegistration } from '../validations/register-validation';
-import { validateUserLogin } from '../validations/login-validation';
+import { validateUserRegistration } from '../validations/Auth/register-validation';
+import { validateUserLogin } from '../validations/Auth/login-validation';
 import { container } from '../providers/container';
 import { UserOtpRequestDTO } from '../dtos/users/auth/otp-request-dto';
-import { validateUserOtp } from '../validations/otp-validation';
+import { validateUserOtp } from '../validations/Auth/otp-validation';
 import { UserPasswordRequestDTO } from '../dtos/users/auth/user-password-dto';
-import { validateUserPassword } from '../validations/user-password-validation';
+import { validateUserPassword } from '../validations/User/user-password-validation';
 import { VerifyUserEmail } from '../dtos/users/auth/auth-verify-email';
-import { validateUserEmail } from '../validations/verify-email-validation';
+import { validateUserEmail } from '../validations/Auth/verify-email-validation';
 
 export class UserAuthController {
     private userAuthService: IUserAuthService;

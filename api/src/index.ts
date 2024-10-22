@@ -7,6 +7,18 @@ import http from 'http';
 import passport from './config/passport-setup';
 import routes from './routes';
 import { errorHandler } from './middleware/errorHandler';
+import TaskReminderService from './services/tasks/send-task-reminders';
+
+
+const taskReminderService = new TaskReminderService();
+
+// Schedule the reminder function to run every day at 12 PM
+setInterval(() => {
+    const now = new Date();
+    if (now.getHours() === 12 && now.getMinutes() === 0) {
+        taskReminderService.sendTaskReminders();
+    }
+}, 60 * 1000);
 
 dotenv.config();
 

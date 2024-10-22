@@ -1,6 +1,6 @@
 import Joi from 'joi';
-import { IUserService } from '../contracts/IUserService';
-import { UserOtpRequestDTO } from '../dtos/users/auth/otp-request-dto';
+import { IUserService } from '../../contracts/IUserService';
+import { UserOtpRequestDTO } from '../../dtos/users/auth/otp-request-dto';
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();

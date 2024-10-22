@@ -3,7 +3,7 @@ import { IUserService } from '../contracts/IUserService';
 import { UserRequestDTO } from '../dtos/users/user-request-dto';
 import { UserResponseDTO } from '../dtos/users/user-response-dto';
 import { ResponseHelper } from '../../helpers/response-helper';
-import { validateUser } from '../validations/user-validation';
+import { validateUser } from '../validations/User/user-validation';
 import { container } from '../providers/container';
 
 export class UserController {

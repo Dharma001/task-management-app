@@ -57,20 +57,20 @@ enum TaskStatusEnum {
   PENDING
   IN_PROGRESS
   COMPLETED
-  ARCHIVED
+  INCOMPLETE
 }
 
 enum TaskPriorityEnum {
   LOW
   MEDIUM
   HIGH
-  URGENT
 }
 
 model Task {
   id                Int              @id @default(autoincrement())
   user_id           Int
-  task_description  String
+  title              String
+  description       String
   created_at        DateTime         @default(now())
   updated_at        DateTime         @updatedAt
   due_date          DateTime?
@@ -85,19 +85,11 @@ model Task {
   @@map("tasks")
 }
 
-enum NotificationType {
-  TASK_ASSIGNED
-  TASK_UPDATED
-  TASK_COMPLETED
-  TASK_REMINDER
-}
-
 model Notification {
   id          Int       @id @default(autoincrement())
   user_id     Int       
   task_id     Int?      
   message     String     
-  type        NotificationType     
   is_read     Boolean    @default(false)
   created_at  DateTime  @default(now()) 
 

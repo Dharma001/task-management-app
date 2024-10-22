@@ -1,9 +1,15 @@
-import { TaskStatusEnum } from './task-status-enum'
+export enum TaskStatusEnum {
+  PENDING = 'PENDING',
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLETED = 'COMPLETED',
+  ARCHIVED = 'ARCHIVED',
+}
 
 export class TaskResponseDTO {
     id: number;
     user_id: number;
-    task_description: string;
+    title: string;
+    description: string;
     created_at: Date;
     updated_at: Date;
     due_date?: Date;
@@ -15,7 +21,8 @@ export class TaskResponseDTO {
     constructor(
         id: number,
         user_id: number,
-        task_description: string,
+        title: string,
+        description: string,
         created_at: Date,
         updated_at: Date,
         due_date?: Date,
@@ -26,7 +33,8 @@ export class TaskResponseDTO {
     ) {
         this.id = id;
         this.user_id = user_id;
-        this.task_description = task_description;
+        this.title = title;
+        this.description = description;
         this.created_at = created_at;
         this.updated_at = updated_at;
         this.due_date = due_date;
@@ -40,7 +48,8 @@ export class TaskResponseDTO {
         return new TaskResponseDTO(
             task.id,
             task.user_id,
-            task.task_description,
+            task.title,
+            task.description,
             task.created_at,
             task.updated_at,
             task.due_date,

@@ -1,6 +1,6 @@
 import Joi from 'joi';
-import { IUserService } from '../contracts/IUserService';
-import { UserPasswordRequestDTO } from '../dtos/users/auth/user-password-dto';
+import { IUserService } from '../../contracts/IUserService';
+import { VerifyUserEmail } from '../../dtos/users/auth/auth-verify-email';
 
 const userSchema = Joi.object({
     email: Joi.string()
@@ -12,15 +12,6 @@ const userSchema = Joi.object({
             'string.email': '"email" must be a valid email',
             'any.required': '"email" is a required field',
         }),
-    password: Joi.string()
-        .min(6)
-        .required()
-        .messages({
-            'string.base': '"password" should be a type of text',
-            'string.empty': '"password" cannot be an empty field',
-            'string.min': '"password" should be at least 6 characters long',
-            'any.required': '"password" is a required field',
-        }),
 });
 
 /**
@@ -28,7 +19,7 @@ const userSchema = Joi.object({
  * @param dto - The UserRequestDTO containing create/update information.
  * @returns An object indicating whether validation succeeded and any validation errors.
  */
-export const validateUserPassword = async (dto: UserPasswordRequestDTO, userService: IUserService) => {
+export const validateUserEmail = async (dto: VerifyUserEmail, userService: IUserService) => {
     const { error } = userSchema.validate(dto, { abortEarly: false });
     if (error) {
         const validationErrors: Record<string, string[]> = {};
@@ -49,7 +40,7 @@ export const validateUserPassword = async (dto: UserPasswordRequestDTO, userServ
         return {
             valid: false,
             errors: {
-                email: ['Opps! something went wrong. please try again later.'],
+                email: ['Sorry, we could not find your account.'],
             },
         };
     }

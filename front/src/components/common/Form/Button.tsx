@@ -10,7 +10,7 @@ interface ButtonProps {
   small?: boolean;
 }
 
-const ButtonComponent: React.FC<ButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   routeName,
   icon,
   type = 'edit',
@@ -107,4 +107,4 @@ const ButtonComponent: React.FC<ButtonProps> = ({
   );
 };
 
-export default ButtonComponent;
+export default Button;

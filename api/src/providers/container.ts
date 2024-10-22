@@ -1,6 +1,5 @@
 
-import { IUserAuthService } from '../contracts/IUserAuthService';
-import { IUserService } from '../contracts/IUserService';
+import { TaskService } from '../services/tasks/task-service';
 import { UserAuthService } from '../services/users/user-auth-service';
 import { UserService } from '../services/users/user-service';
 
@@ -16,6 +15,7 @@ class Container {
     private registerServices() {
         this.services.set('IUserAuthService', new UserAuthService());
         this.services.set('IUserService', new UserService());
+        this.services.set('ITaskService', new TaskService());
     }
 
     public register<T>(key: string, service: Constructor<T>): void {

@@ -60,6 +60,13 @@ enum TaskStatusEnum {
   ARCHIVED
 }
 
+enum TaskPriorityEnum {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
 model Task {
   id                Int              @id @default(autoincrement())
   user_id           Int
@@ -68,15 +75,16 @@ model Task {
   updated_at        DateTime         @updatedAt
   due_date          DateTime?
   attachment        String?          
-  priority          String?          
+  priority          TaskPriorityEnum?
   archived          Boolean          @default(false)
-  status            TaskStatusEnum   
+  status            TaskStatusEnum   @default(PENDING)
 
   user             User              @relation("UserTasks", fields: [user_id], references: [id], onDelete: Cascade)
   notifications    Notification[]    @relation("TaskNotifications")
 
   @@map("tasks")
 }
+
 enum NotificationType {
   TASK_ASSIGNED
   TASK_UPDATED

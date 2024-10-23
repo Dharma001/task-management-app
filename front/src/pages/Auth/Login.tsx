@@ -47,10 +47,15 @@ const Login: React.FC<LoginProps> = ({ onClose }) => {
     if (loginSuccess?.statusCode === 200) {
       const token = loginSuccess?.data.token;
       localStorage.setItem('token', token);
+  
+      setTimeout(() => {
+        localStorage.removeItem('token');
+      }, 1200000);
+  
       navigate('/');
     }
   };
-
+  
   const togglePasswordVisibility = () => {
     setPasswordVisible((prev) => !prev);
   };

@@ -8,6 +8,7 @@ interface ButtonProps {
   label?: string | number;
   roundedFull?: boolean;
   small?: boolean;
+  onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = ({
@@ -17,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   label,
   roundedFull = false,
   small = false,
+  onClick,
 }) => {
   const [showTooltip, setShowTooltip] = useState(false);
 
@@ -99,6 +101,7 @@ const Button: React.FC<ButtonProps> = ({
           onMouseOver={() => setShowTooltip(true)}
           onMouseLeave={() => setShowTooltip(false)}
           aria-label={tooltipText}
+          onClick={type === 'delete' ? onClick : undefined}
         >
           {renderButtonContent()}
         </button>

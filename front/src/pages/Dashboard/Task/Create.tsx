@@ -1,18 +1,9 @@
-import React from 'react';
-import Form, { TaskFormData } from './Form';
+import React from 'react'
 
-const Create: React.FC = () => {
-    const handleCreateTask = async (formData: TaskFormData) => {
-        // Logic to create a task using formData
-        console.log('Creating task:', formData);
-        // Call an API here to save the task
-    };
+function Create() {
+  return (
+    <div>Create</div>
+  )
+}
 
-    return (
-        <div className="p-4">
-            <Form title="Create New Task" onSubmit={handleCreateTask} />
-        </div>
-    );
-};
-
-export default Create;
+export default Create

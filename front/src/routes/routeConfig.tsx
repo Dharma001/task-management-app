@@ -32,7 +32,7 @@ export const routeConfig: RouteConfig[] = [
     protected: true 
   },
   { 
-    path: "/tasks/edit/:taskId", 
+    path: "/tasks/:taskId", 
     element: <TaskEdit />,
     protected: true 
   }

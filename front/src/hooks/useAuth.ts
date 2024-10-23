@@ -28,7 +28,6 @@ export const useAuth = () => {
   const [loading, setLoading] = useState<boolean>(false); 
   const [error, setError] = useState<ServerError | null>(null); 
 
-  // Handle successful responses
   const handleResponse = <T extends ApiResponse>(response: T): T => {
     if (response.message) {
       toast.success(response.message);

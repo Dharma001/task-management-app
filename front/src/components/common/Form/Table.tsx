@@ -1,51 +1,34 @@
 import React from "react";
 
-interface TableItem {
-  id: number | string; 
-}
-
-interface TableProps<T extends TableItem> {
+interface TableProps<T> {
   headers: string[];
-  items: {
-    data: T[];
-  };
-  children: (item: T) => React.ReactNode;
+  items: T[];
+  renderRow: (item: T, index: number) => React.ReactNode;
 }
 
-const Table = <T extends TableItem>({
-  headers,
-  items,
-  children,
-}: TableProps<T>) => {
+const Table = <T,>({ headers, items, renderRow }: TableProps<T>) => {
   return (
-    <div className="overflow-x-auto">
-      <table className="min-w-full bg-white border border-gray-300 rounded-lg shadow-md">
-        <thead className="bg-gray-100">
-          <tr>
+    <div className="overflow-x-auto  h-[50vh]">
+      <table className="min-w-full bg-white border border-gray-300">
+        <thead>
+          <tr className="bg-gray-200">
             {headers.map((header, index) => (
-              <th
-                key={index}
-                className="border-b border-gray-300 text-left text-sm font-semibold text-gray-600 p-3"
-              >
+              <th key={index} className="p-2 text-left border-b border-gray-300">
                 {header}
               </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {items.data.map((item, index) => (
-            <tr
-              key={item.id}
-              className={`hover:bg-gray-50 transition-colors ${
-                index % 2 !== 0 ? "bg-gray-50" : "bg-white"
-              } text-gray-700 text-sm`}
-            >
-              <td className="p-3" data-label="SN">
-                {index + 1}
+          {items.length > 0 ? (
+            items.map((item, index) => renderRow(item, index))
+          ) : (
+            <tr>
+              <td colSpan={headers.length} className="p-2 text-center">
+                No data available
               </td>
-              {children(item)} 
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
     </div>

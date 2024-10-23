@@ -1,20 +1,18 @@
-# Task Management Application
-
-## System Requirements
-
-To run this Task Management application, ensure your system has the following installed:
-
-1. **Node.js**: 18 or later
-2. **PostgreSQL**: ^12.0 or later
-3. **pnpm**: (recommended for package management)
-
-## Setup
-
-Follow the steps below to set up the project on your local machine.
-
-### 1. Clone the Repository
-
-Clone the project repository to your local machine:
-```bash
+# Clone the repository
 git clone https://github.com/Dharma001/task-management-app.git
 cd task-management-app
+
+# Set up backend
+cd api
+cp .env.example .env
+pnpm install
+pnpm prisma generate
+pnpm prisma:migrate
+pnpm run dev 
+
+### Api tests are in mero-task-app.postman_collection   (POSTMAN)
+
+# Set up frontend
+cd front
+pnpm install
+pnpm run dev

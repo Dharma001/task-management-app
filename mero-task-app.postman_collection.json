@@ -1,0 +1,440 @@
+{
+	"info": {
+		"_postman_id": "ead412e7-06db-4e97-b636-60fcdcfc5d0e",
+		"name": "mero-task-app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29983381"
+	},
+	"item": [
+		{
+			"name": "api",
+			"item": [
+				{
+					"name": "Task",
+					"item": [
+						{
+							"name": "TaskFilter",
+							"item": [
+								{
+									"name": "tasksFilterByDate",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ5b2dlc2hAZ21haWwuY29tIiwiaWF0IjoxNzI5NjYxMzMxLCJleHAiOjE3Mjk2NjQ5MzF9.bjV5wcTDT38sPm84pigPCi-M-UdsI8OhewDvvYCA2pY",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:5000/api/v1/tasks?fromDate=2024-10-21&toDate=2024-10-22",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"api",
+												"v1",
+												"tasks"
+											],
+											"query": [
+												{
+													"key": "fromDate",
+													"value": "2024-10-21"
+												},
+												{
+													"key": "toDate",
+													"value": "2024-10-22"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "tasksFilterByStatus",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ5b2dlc2hAZ21haWwuY29tIiwiaWF0IjoxNzI5NjA5MDg0LCJleHAiOjE3Mjk2MTI2ODR9.Gh8uW8FRxjEYtoPoZ3yhu89CoZcmr9eIhUwounsC9bE",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:5000/api/v1/tasks?status=COMPLETED",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"api",
+												"v1",
+												"tasks"
+											],
+											"query": [
+												{
+													"key": "status",
+													"value": "COMPLETED"
+												}
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "tasksFilterByPriory",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Authorization",
+												"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ5b2dlc2hAZ21haWwuY29tIiwiaWF0IjoxNzI5NTkwOTQ5LCJleHAiOjE3Mjk1OTQ1NDl9.dC1YjudHTTp3L1BK-_4pzU6dApeEqfnjzOKayHtchcs",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:5000/api/v1/tasks",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "5000",
+											"path": [
+												"api",
+												"v1",
+												"tasks"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "tasks",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ5b2dlc2hAZ21haWwuY29tIiwiaWF0IjoxNzI5NTkwOTQ5LCJleHAiOjE3Mjk1OTQ1NDl9.dC1YjudHTTp3L1BK-_4pzU6dApeEqfnjzOKayHtchcs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/tasks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tasksCreate",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJ5b2dlc2hAZ21haWwuY29tIiwiaWF0IjoxNzI5NjI2NDkwLCJleHAiOjE3Mjk2MzAwOTB9.mg3G4Ssn-DFDsQzpwNb_avG_OYPTvIW5xU87tboCrAs",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"taskHero\",\r\n    \"description\": \"Complete the project documentation\",\r\n    \"due_date\": \"2024-10-30T23:59:59Z\",\r\n    \"attachment\": \"http://example.com/file.pdf\",\r\n    \"priority\": \"LOW\",\r\n    \"archived\": false,\r\n    \"status\": \"PENDING\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/tasks",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"tasks"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tasksUpdate",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ5b2dlc2hAZ21haWwuY29tIiwiaWF0IjoxNzI5NjA1NTcwLCJleHAiOjE3Mjk2MDkxNzB9.JctZxwbbLDgV4hYxCeo7qESnewf-RuMzZELY15Ci3f0",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title\": \"taskHero\",\r\n    \"description\": \"Complete the project documentation\",\r\n    \"due_date\": \"2024-10-30T23:59:59Z\",\r\n    \"attachment\": \"http://example.com/file.pdf\",\r\n    \"priority\": \"LOW\",\r\n    \"archived\": false,\r\n    \"status\": \"INCOMPLETE\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/tasks/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tasksStatusUpdate",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ5b2dlc2hAZ21haWwuY29tIiwiaWF0IjoxNzI5NTk3NDgzLCJleHAiOjE3Mjk2MDEwODN9.007fgLlDiAXJyvy848LtHN7BDvd2jMpnoQthHhuHSKU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"status\": \"COMPLETE\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/tasks/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"2"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "tasksPriorityUpdate",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ5b2dlc2hAZ21haWwuY29tIiwiaWF0IjoxNzI5NjA2MzU0LCJleHAiOjE3Mjk2MDk5NTR9.RsPxLzdIdMqgWcCDIinUzWgq2u-4Me7NFZWvHy0MuuU",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"priority\": \"MEDIUM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/v1/tasks/priority/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"v1",
+										"tasks",
+										"priority",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "register",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"email\": \"yogesh@gmail.com\",\r\n  \"dob\": \"2002-12-02T14:30:00Z\",\r\n  \"password\": \"Password123\",\r\n  \"confirmPassword\": \"Password123\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/auth/register",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"auth",
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "otp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"yogesh@gmail.com\",\r\n  \"otp\": \"101010\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/auth/verifyOtp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"auth",
+										"verifyOtp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"yogesh@gmail.com\",\r\n  \"password\": \"Pa$$w0rd!\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:5000/api/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

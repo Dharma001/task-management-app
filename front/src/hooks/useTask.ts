@@ -77,26 +77,26 @@ export const useTasks = () => {
   const taskCreate = (
     title: string,
     description: string,
-    dueDate: Date | null,
+    due_date: Date | null,
     priority: TaskPriorityEnum,
     attachment?: string,
     archived?: boolean,
     status?: TaskStatusEnum
   ): Promise<TaskBaseResponse | void> => {
-    return apiCall(createTask, title, description, dueDate, priority, attachment, archived, status);
+    return apiCall(createTask, title, description, due_date, priority, attachment, archived, status);
   };
 
   const taskUpdate = (
     taskId: number,
     title: string,
     description: string,
-    dueDate: Date | null,
+    due_date: Date | null,
     priority: TaskPriorityEnum,
-    status: TaskStatusEnum,
     attachment?: string,
-    archived: boolean = false
+    archived?: boolean,
+    status?: TaskStatusEnum
   ): Promise<TaskBaseResponse | void> => {
-    return apiCall(updateTask, taskId, title, description, dueDate, priority, status, attachment, archived);
+    return apiCall(updateTask, taskId, title, description, due_date, priority, status, attachment, archived);
   };
 
   return {

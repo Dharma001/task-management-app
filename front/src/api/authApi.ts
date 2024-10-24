@@ -15,6 +15,7 @@ export const registerUser = async (name: string, email: string , dob: Date , pas
 export const verifyOtp = async (otp: string, email: string): Promise<OtpResponse> => {
     const response = await axios.post<OtpResponse>(`${API_URL}/auth/verify-otp`, { otp, email });
     return response.data;
+    
 };
 
 export const createPassword = async ( email: string , password: string): Promise<PasswordResponse> => {

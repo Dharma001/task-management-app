@@ -1,14 +1,15 @@
 import React from 'react';
 
 interface InputLabelProps {
-    value?: string; // Optional string prop for the label text
-    children?: React.ReactNode; // To allow for slot-like behavior
+    htmlFor?: string;
+    text?: string;
+    children?: React.ReactNode; 
 }
 
-const InputLabel: React.FC<InputLabelProps> = ({ value, children }) => {
+const InputLabel: React.FC<InputLabelProps> = ({ htmlFor, text, children }) => {
     return (
-        <label className="block font-medium text-sm text-gray-700">
-            {value ? <span>{value}</span> : <span>{children}</span>}
+        <label htmlFor={htmlFor} className="block font-medium text-sm text-gray-700">
+            {text ? <span>{text}</span> : <span>{children}</span>}
         </label>
     );
 };

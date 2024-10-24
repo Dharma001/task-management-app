@@ -34,11 +34,15 @@ const fetchWithAuth = async <T>(
 
   try {
     const response = await axios(config);
-    return response.data; 
-  } catch {
-    const errorMessage = 'Request failed';
-    throw new Error(errorMessage);
-  }
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      console.error('Error response:', error.response?.data);
+    } else {
+      console.error('Unexpected error:', error);
+    }
+    throw new Error('Request failed');
+  }  
 };
 
 export const createTask = async (
@@ -55,10 +59,11 @@ export const createTask = async (
     description,
     due_date: dueDate ? dueDate.toISOString() : null,
     priority,
-    attachment,
+    attachment: attachment ? attachment : 'http://example.com/file.pdf',
     archived,
     status,
   };
+  console.log('Data being sent to API:', data);
   return await fetchWithAuth<TaskBaseResponse>('POST', '/tasks', data);
 };
 
@@ -87,19 +92,21 @@ export const updateTask = async (
   description: string,
   dueDate: Date | null,
   priority: TaskPriorityEnum,
-  status: TaskStatusEnum,
   attachment?: string,
-  archived: boolean = false
+  archived: boolean = false,
+  status: TaskStatusEnum = TaskStatusEnum.PENDING
 ): Promise<TaskBaseResponse> => {
   const data = {
     title,
     description,
     due_date: dueDate ? dueDate.toISOString() : null,
     priority,
-    status,
-    attachment,
+    attachment: attachment ? attachment : 'http://example.com/file.pdf',
     archived,
+    status,
   };
+
+  console.log('Data being sent to API:', data);
   return await fetchWithAuth<TaskBaseResponse>('PUT', `/tasks/${taskId}`, data);
 };
 

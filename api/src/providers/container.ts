@@ -1,4 +1,6 @@
 
+import { IUserAuthService } from '../contracts/IUserAuthService';
+import { IUserService } from '../contracts/IUserService';
 import { TaskService } from '../services/tasks/task-service';
 import { UserAuthService } from '../services/users/user-auth-service';
 import { UserService } from '../services/users/user-service';
